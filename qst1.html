@@ -5,10 +5,45 @@
     <title>Lista de compras</title>
 </head>
 <body>
-    <div><label>Quantidade: <input type="number" name="quantidade"/></label></div>
-    <div><label>Item: <input type="text" name="item"/></label></div>
+
+    <h1>Lista de compras</h1>
+
+    <form name="Itens" method="GET">
+    <label>Quantidade: <input type="number" name="quantidade"/></label>
+    <label>Item: <input type="text" name="item"/></label>
+    </form>
+
+    <ul>
+    </ul>
+    <button id="botaoAdd">Adicionar</button>
+    
+
+    <script>
+
+        var compras = [];
+        var botaoAdd = document.getElementById("botaoAdd");
+       
+
+        botaoAdd.addEventListener("click", addNovoElementoLista);
+        
+        function addNovoElementoLista(e){
+            e.preventDefault();
+            var item = document.forms.Itens.item.value;
+            var quantidade = document.forms.Itens.quantidade.value;
+            var novaCompra = {"item" : item, "quantidade" : quantidade};
+
+            compras.push(novaCompra);
+
+            var lista = document.getElementsByTagName("ul")[0];
+            var compra = document.createElement("li");
+            compra.textContent = "Foi comprada uma quantidade " + novaCompra.quantidade + " do item " + novaCompra.item;
+            lista.appendChild(compra);
 
 
+        }
+            
+    
+    </script>
 
 </body>
 </html>
