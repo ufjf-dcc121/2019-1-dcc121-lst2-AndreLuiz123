@@ -16,15 +16,17 @@
     <ul>
     </ul>
     <button id="botaoAdd">Adicionar</button>
+    <button id="botaoLimpar">Limpar</button>
     
 
     <script>
 
         var compras = [];
         var botaoAdd = document.getElementById("botaoAdd");
-       
+        var botaoLimpar = document.getElementById("botaoLimpar");
 
         botaoAdd.addEventListener("click", addNovoElementoLista);
+        botaoLimpar.addEventListener("click", apagaElementosLista);
         
         function addNovoElementoLista(e){
             e.preventDefault();
@@ -38,8 +40,16 @@
             var compra = document.createElement("li");
             compra.textContent = "Foi comprada uma quantidade " + novaCompra.quantidade + " do item " + novaCompra.item;
             lista.appendChild(compra);
+        }
 
-
+        function apagaElementosLista(e){
+            e.preventDefault();
+            var lista = document.getElementsByTagName("ul")[0];    
+            if(compras.length>0)        
+            for(i = compras.length; i>-1; i--)
+            {
+                lista.removeChild(lista.childNodes[0]);
+            }
         }
             
     
