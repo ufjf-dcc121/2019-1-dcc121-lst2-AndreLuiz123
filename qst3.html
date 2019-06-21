@@ -43,6 +43,7 @@
                 var lista = document.getElementById("adultos");
                 var novoLi = document.createElement("li");
                 novoLi.textContent = nome + " - "+idade;
+                novoLi.contentEditable = true;
                 lista.appendChild(novoLi);
             }else
             {
@@ -50,6 +51,7 @@
                 var lista = document.getElementById("estudantes");
                 var novoLi = document.createElement("li");
                 novoLi.textContent = nome + " - "+idade;
+                novoLi.contentEditable = true;
                 lista.appendChild(novoLi);
             }
 
