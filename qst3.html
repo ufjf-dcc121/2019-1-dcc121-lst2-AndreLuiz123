@@ -6,18 +6,58 @@
 </head>
 <body>
 
-    <form>
+    <form id="excursao">
         <label>Nome: <input type="text" name="nome"/></label>
-        <label>Idade: <input type="number" name="nome"/></label>
+        <label>Idade: <input type="number" name="idade"/></label>
 
         <input type="submit"></input>
     </form>
-    
+
+
+    <h3>Adultos</h3>
     <ul id="adultos">
     </ul>
 
+    <h3>Estudantes</h3>
     <ul id="estudantes">
     </ul>
+
+    <script>
+
+        var adultos = [];
+        var estudantes = [];
+        var form = document.forms.excursao;
+        form.addEventListener("submit", processaEnvio);
+    
+        function processaEnvio(e)
+        {
+            e.preventDefault();
+            var nome = document.forms.excursao.nome.value;
+            var idade = Number(document.forms.excursao.idade.value);
+
+            var novoElemento = {"nome" : nome, "idade" : idade};
+            
+            if(idade>=18)
+            {
+                adultos.push(novoElemento);
+                var lista = document.getElementById("adultos");
+                var novoLi = document.createElement("li");
+                novoLi.textContent = nome + " - "+idade;
+                lista.appendChild(novoLi);
+            }else
+            {
+                estudantes.push(novoElemento);
+                var lista = document.getElementById("estudantes");
+                var novoLi = document.createElement("li");
+                novoLi.textContent = nome + " - "+idade;
+                lista.appendChild(novoLi);
+            }
+
+        }
+
+
+    
+    </script>
 
 </body>
 </html>
