@@ -9,6 +9,7 @@
         <label>Entrada: <input type="number" name="entrada"/></label>
 
         <button id="empilhar">Empilhar</button>
+        <button id="desempilhar">Desempilhar</button>
     </form>
 
     <ol>
@@ -18,9 +19,10 @@
     
     var pilha = [];
         var botaoEmpilha = document.getElementById("empilhar");
-        var botaoDesempilha = document.getElementById("botaoDesempilhar");
+        var botaoDesempilha = document.getElementById("desempilhar");
 
         botaoEmpilha.addEventListener("click", empilhar);
+        botaoDesempilha.addEventListener("click", desempilhar);
 
         function empilhar(e){
             e.preventDefault();
@@ -31,6 +33,13 @@
             var novoLi = document.createElement("li");
             novoLi.textContent = novoElemento.entrada;
             lista.appendChild(novoLi);
+        }
+
+        function desempilhar(e){
+            e.preventDefault();
+            pilha.pop();
+            var lista = document.getElementsByTagName("ol")[0];
+            lista.removeChild(lista.lastChild);
         }
     
     
