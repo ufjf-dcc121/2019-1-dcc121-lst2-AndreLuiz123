@@ -13,6 +13,28 @@
 
     <ol>
     </ol>
+
+    <script>
+    
+    var pilha = [];
+        var botaoEmpilha = document.getElementById("empilhar");
+        var botaoDesempilha = document.getElementById("botaoDesempilhar");
+
+        botaoEmpilha.addEventListener("click", empilhar);
+
+        function empilhar(e){
+            e.preventDefault();
+            var element = Number(document.forms.Pilha.entrada.value);
+            var novoElemento = {"entrada":element};
+            pilha.push(novoElemento);
+            var lista = document.getElementsByTagName("ol")[0];
+            var novoLi = document.createElement("li");
+            novoLi.textContent = novoElemento.entrada;
+            lista.appendChild(novoLi);
+        }
+    
+    
+    </script>
     
     
 
