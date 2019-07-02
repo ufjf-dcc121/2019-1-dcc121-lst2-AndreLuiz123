@@ -98,8 +98,7 @@
         velocidades.push(velocidade);
         idades.push(idade);
 
-        console.log(animais[0]);
-
+    
         maiorQueMedia();
         encontraMaior();
         atualizaMedias(altura, peso, velocidade, idade);
@@ -181,7 +180,6 @@
             }
         }
 
-        console.log(retorno1+" "+retorno2+" "+retorno3+" "+retorno4);
 
 
         maisPeso.textContent = " "+animais[retorno1];;
@@ -198,7 +196,7 @@
         
         for(var i = 0; i<animais.length; i++)
         {
-            console.log(mediaPeso);
+
             if(pesos[i]>operacoesMediaPeso/contadorAnimais)
             {
                 media++;
