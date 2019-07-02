@@ -42,6 +42,11 @@
         </tfoot>
     </table>
 
+    <p>Animal mais alto: <span id="maisAlto"></span></p>
+    <p>Animal mais pesado: <span id="maisPesado"></span></p>
+    <p>Animal mais veloz: <span id="maisVeloz"></span></p>
+    <p>Animal mais longevo: <span id="maisIdade"></span></p>
+
     <script>
     
     var mediaAltura = document.getElementById("mediaAltura");
@@ -49,6 +54,16 @@
     var mediaVelocidade = document.getElementById("mediaVelocidade");
     var mediaIdade = document.getElementById("mediaIdade");
     var contadorAnimais = 0;
+    var animais = [];
+    var alturas = [];
+    var pesos = [];
+    var velocidades = [];
+    var idades = [];    
+ 
+    var maisPeso = document.getElementById("maisPesado");
+    var maisAltura = document.getElementById("maisAlto");
+    var maisVelocidade = document.getElementById("maisVeloz");
+    var maisIdade = document.getElementById("maisIdade");
 
     var operacoesMediaAltura = 0;
     var operacoesMediaPeso = 0;
@@ -71,7 +86,15 @@
         var idade = Number(forms.idade.value);
 
         contadorAnimais++;
+        animais.push(animal);
+        alturas.push(altura);
+        pesos.push(peso);
+        velocidades.push(velocidade);
+        idades.push(idade);
 
+        console.log(animais[0]);
+
+        encontraMaior(animais, pesos, velocidades, idades,alturas);
         atualizaMedias(altura, peso, velocidade, idade);
         jogaLinhaTabela(animal, altura, peso, velocidade, idade);
     }
@@ -110,8 +133,57 @@
         mediaPeso.textContent=(operacoesMediaPeso)/contadorAnimais;
         mediaVelocidade.textContent= (operacoesMediaVelocidade)/contadorAnimais
         mediaIdade.textContent= (operacoesMediaIdade)/contadorAnimais;
+    }
+
+    function encontraMaior()
+    {
+        var retorno1=0,retorno2=0,retorno3=0,retorno4=0;
+        var peso = pesos[0];
+        for(var i = 0; i<animais.length; i++)
+        {
+            if(pesos[i]>peso)
+            {
+                retorno1 = i;
+            }
+        }
+
+        var altura = alturas[0];
+        for(var i = 0; i<animais.length; i++)
+        {
+            if(alturas[i]>altura)
+            {
+                retorno2 = i;
+            }
+        }
+        
+        var velocidade = velocidades[0];
+        for(var i = 0; i<animais.length; i++)
+        {
+            if(velocidades[i]>velocidade)
+            {
+                retorno3 = i;
+            }
+        }
+
+        var idade = idades[0];
+        for(var i = 0; i<animais.length; i++)
+        {
+            if(idades[i]>idade)
+            {
+                retorno4 = i;
+            }
+        }
+
+        console.log(retorno1+" "+retorno2+" "+retorno3+" "+retorno4);
+
+
+        maisPeso.textContent = " "+animais[retorno1];;
+        maisAltura.textContent = " "+animais[retorno2];
+        maisVelocidade.textContent = " "+animais[retorno3];
+        maisIdade.textContent = " "+animais[retorno4];
 
     }
+
 
     
     
