@@ -7,7 +7,7 @@
 <body>
 
     <table border="borda">
-        <form id="excursao">
+        <form id="animais">
             <label>Animal: <input type="text" name="animal"/></label>
             <label>Altura: <input type="number" name="altura"/></label>
             <label>Peso: <input type="number" name="peso"/></label>
@@ -27,24 +27,95 @@
         </thead>
             <tr>
             </tr>
-
-            <tr>
-            </tr>
-
-            <tr>
-            </tr>
-        
-            <tr>
-            </tr>
-    
-            <tr>
-            </tr>            
+ 
+                
          </tbody>
         <tfoot>
-            
+                       
+                <tr>
+                        <td>Média:</td>
+                        <td id="mediaAltura"></td>
+                        <td id="mediaPeso"></td>   
+                        <td id="mediaVelocidade"></td>
+                        <td id="mediaIdade"></td> 
+                </tr>
         </tfoot>
     </table>
 
+    <script>
+    
+    var mediaAltura = document.getElementById("mediaAltura");
+    var mediaPeso = document.getElementById("mediaPeso");
+    var mediaVelocidade = document.getElementById("mediaVelocidade");
+    var mediaIdade = document.getElementById("mediaIdade");
+    var contadorAnimais = 0;
+
+    var operacoesMediaAltura = 0;
+    var operacoesMediaPeso = 0;
+    var operacoesMediaVelocidade = 0;
+    var operacoesMediaIdade = 0;
+
+    var forms = document.forms.animais;
+
+        forms.addEventListener("submit",novoAnimal);
+
+        var corpoTabela = document.querySelector("tbody");
+
+    function novoAnimal(e){
+        e.preventDefault();
+
+        var animal = forms.animal.value;
+        var altura = Number(forms.altura.value);
+        var peso = Number(forms.peso.value);
+        var velocidade = Number(forms.velocidade.value);
+        var idade = Number(forms.idade.value);
+
+        contadorAnimais++;
+
+        atualizaMedias(altura, peso, velocidade, idade);
+        jogaLinhaTabela(animal, altura, peso, velocidade, idade);
+    }
+
+    function jogaLinhaTabela(animal, altura, peso, velocidade, idade)
+    {
+            var tdAnimal = document.createElement("td");
+            tdAnimal.textContent = animal;
+            var tdAltura = document.createElement("td");
+            tdAltura.textContent = altura;
+            var tdPeso = document.createElement("td");
+            tdPeso.textContent = peso;
+            var tdVelocidade = document.createElement("td");
+            tdVelocidade.textContent = velocidade;
+            var tdIdade = document.createElement("td");
+            tdIdade.textContent = idade;
+
+            var trLinha = document.createElement("tr");
+            trLinha.appendChild(tdAnimal);
+            trLinha.appendChild(tdAltura);
+            trLinha.appendChild(tdPeso);
+            trLinha.appendChild(tdVelocidade);
+            trLinha.appendChild(tdIdade);
+
+            corpoTabela.appendChild(trLinha);
+    }
+
+    function atualizaMedias(altura, peso, velocidade, idade)
+    {
+        operacoesMediaAltura+=altura;
+        operacoesMediaPeso+=peso;
+        operacoesMediaVelocidade+=velocidade;
+        operacoesMediaIdade+=idade;
+
+        mediaAltura.textContent= (operacoesMediaAltura)/contadorAnimais;
+        mediaPeso.textContent=(operacoesMediaPeso)/contadorAnimais;
+        mediaVelocidade.textContent= (operacoesMediaVelocidade)/contadorAnimais
+        mediaIdade.textContent= (operacoesMediaIdade)/contadorAnimais;
+
+    }
+
+    
+    
+    </script>
 
 </body>
 </html>
