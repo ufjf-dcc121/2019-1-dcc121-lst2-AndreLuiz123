@@ -28,6 +28,8 @@
         var estudantes = [];
         var form = document.forms.excursao;
         form.addEventListener("submit", processaEnvio);
+        var contadorAdultos=0;
+        var contadorEstudantes=0;
     
         function processaEnvio(e)
         {
@@ -45,6 +47,8 @@
                 novoLi.textContent = nome + " - "+idade;
                 novoLi.contentEditable = true;
                 lista.appendChild(novoLi);
+                contadorAdultos++;
+                contadorEstudantes++;
             }else
             {
                 estudantes.push(novoElemento);
@@ -53,9 +57,10 @@
                 novoLi.textContent = nome + " - "+idade;
                 novoLi.contentEditable = true;
                 lista.appendChild(novoLi);
+                contadorEstudantes++;
             }
-
         }
+
 
 
     
