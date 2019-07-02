@@ -47,6 +47,9 @@
     <p>Animal mais veloz: <span id="maisVeloz"></span></p>
     <p>Animal mais longevo: <span id="maisIdade"></span></p>
 
+    
+    <p>Animais acima da média de peso: <span id="acimaMedia"></span></p>
+
     <script>
     
     var mediaAltura = document.getElementById("mediaAltura");
@@ -59,6 +62,9 @@
     var pesos = [];
     var velocidades = [];
     var idades = [];    
+    var acimaMedia = document.getElementById("acimaMedia");
+
+    var nAcimaMedia=0;
  
     var maisPeso = document.getElementById("maisPesado");
     var maisAltura = document.getElementById("maisAlto");
@@ -94,7 +100,8 @@
 
         console.log(animais[0]);
 
-        encontraMaior(animais, pesos, velocidades, idades,alturas);
+        maiorQueMedia();
+        encontraMaior();
         atualizaMedias(altura, peso, velocidade, idade);
         jogaLinhaTabela(animal, altura, peso, velocidade, idade);
     }
@@ -181,6 +188,25 @@
         maisAltura.textContent = " "+animais[retorno2];
         maisVelocidade.textContent = " "+animais[retorno3];
         maisIdade.textContent = " "+animais[retorno4];
+
+    }
+
+    function maiorQueMedia()
+    {
+
+        var media = 0;
+        
+        for(var i = 0; i<animais.length; i++)
+        {
+            console.log(mediaPeso);
+            if(pesos[i]>operacoesMediaPeso/contadorAnimais)
+            {
+                media++;
+            }
+        }
+
+
+        acimaMedia.textContent = media;
 
     }
 
